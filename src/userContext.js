@@ -5,8 +5,10 @@ let UserContext = React.createContext();
 export default UserContext;
 
 export const UserProvider = ({ children }) => {
- const [userName, setUserName] = useState("Hello There!");
+ const [userData, setUserData] = useState([]);
  return (
-  <UserContext.Provider value={userName}>{children}</UserContext.Provider>
+  <UserContext.Provider value={{ userData, setUserData }}>
+   {children}
+  </UserContext.Provider>
  );
 };

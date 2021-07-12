@@ -1,82 +1,75 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import UserContext from "./userContext";
+import { useHistory } from "react-router-dom";
 
 function Usercreate() {
+ const [name, setName] = useState("");
+ const [username, setUsername] = useState("");
+ const [mobile, setMobile] = useState("");
+ const [email, setEmail] = useState("");
+
+ let data = useContext(UserContext);
+ let history = useHistory();
+
+ let handleSubmit = () => {
+  data.setUserData([...data.userData, { name, username, mobile, email }]);
+  console.log(data.userData);
+  history.push("/user");
+ };
  return (
   <>
-   <div>
-    <h1 className="h3 mb-2 text-gray-800">Tables</h1>
-    <p className="mb-4">
-     DataTables is a third party plugin that is used to generate the demo table
-     below. For more information about DataTables, please visit the{" "}
-     <Link to="https://datatables.net">official DataTables documentation</Link>.
-    </p>
-   </div>
-   <div className="card shadow mb-4">
-    <div className="card-header py-3">
-     <h6 className="m-0 font-weight-bold text-primary">DataTables Example</h6>
+   <div className="container">
+    <h1>User Form</h1>
+    <div className="row">
+     <div className="col-lg-6">
+      <label>Name</label>
+      <input
+       type="text"
+       name="name"
+       value={name}
+       onChange={(e) => setName(e.target.value)}
+       className="form-control"
+      />
+     </div>
+     <div className="col-lg-6">
+      <label>User Name</label>
+      <input
+       type="text"
+       name="username"
+       value={username}
+       onChange={(e) => setUsername(e.target.value)}
+       className="form-control"
+      />
+     </div>
+     <div className="col-lg-6">
+      <label>Mobile</label>
+      <input
+       type="tel"
+       name="mobile"
+       value={mobile}
+       onChange={(e) => setMobile(e.target.value)}
+       className="form-control"
+      />
+     </div>
+     <div className="col-lg-6">
+      <label>Email</label>
+      <input
+       type="Email"
+       name="email"
+       value={email}
+       onChange={(e) => setEmail(e.target.value)}
+       className="form-control"
+      />
+     </div>
     </div>
-    <div className="card-body">
-     <div className="table-responsive">
-      <table
-       className="table table-bordered"
-       id="dataTable"
-       width="100%"
-       cellSpacing={0}
-      >
-       <thead>
-        <tr>
-         <th>Name</th>
-         <th>Position</th>
-         <th>Office</th>
-         <th>Age</th>
-         <th>Start date</th>
-         <th>Action</th>
-        </tr>
-       </thead>
-       <tfoot>
-        <tr>
-         <th>Name</th>
-         <th>Position</th>
-         <th>Office</th>
-         <th>Age</th>
-         <th>Start date</th>
-         <th>Action</th>
-        </tr>
-       </tfoot>
-       <tbody>
-        <tr>
-         <td>Tiger Nixon</td>
-         <td>System Architect</td>
-         <td>Edinburgh</td>
-         <td>61</td>
-         <td>2011/04/25</td>
-         <td>
-          <Link to="/user-edit/1">Edit</Link>
-         </td>
-        </tr>
-        <tr>
-         <td>Tiger Nixon</td>
-         <td>System Architect</td>
-         <td>Edinburgh</td>
-         <td>61</td>
-         <td>2011/04/25</td>
-         <td>
-          <Link to="/user-edit/2">Edit</Link>
-         </td>
-        </tr>
-        <tr>
-         <td>Tiger Nixon</td>
-         <td>System Architect</td>
-         <td>Edinburgh</td>
-         <td>61</td>
-         <td>2011/04/25</td>
-         <td>
-          <Link to="/user-edit/3">Edit</Link>
-         </td>
-        </tr>
-       </tbody>
-      </table>
+    <div className="mt-3 row">
+     <div className="col-lg-12">
+      <input
+       type="submit"
+       value="submit"
+       className="btn btn-primary"
+       onClick={handleSubmit}
+      />
      </div>
     </div>
    </div>

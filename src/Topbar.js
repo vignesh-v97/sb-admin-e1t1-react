@@ -32,7 +32,6 @@ function Topbar() {
       </div>
      </div>
     </form>
-    {data}
     {/* Topbar Navbar */}
     <ul className="ml-auto navbar-nav">
      {/* Nav Item - Search Dropdown (Visible Only XS) */}

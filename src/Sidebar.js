@@ -38,12 +38,6 @@ function Sidebar() {
       <span>Users</span>
      </Link>
     </li>
-    <li className="nav-item">
-     <Link to="/user" className="nav-link">
-      <i className="fas fa-fw fa-table" />
-      <span>{data}</span>
-     </Link>
-    </li>
     {/* Divider */}
     <hr className="sidebar-divider d-none d-md-block" />
     {/* Sidebar Toggler (Sidebar) */}
